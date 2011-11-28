@@ -16,3 +16,7 @@ jquery-radiate adds two methods to jQuery objects: `radiate([options] [, callbac
 The `unradiate` method will remove the glow effect from an element that already has it applied. Since the glow effect is a CSS3 `box-shadow` hack, this will also remove all shadows applied through that property. The first argument of `unradiate` is the duration of time (in milliseconds) it will take to remove the glow, and should be specified as an integer.
 
 Both `radiate` and `unradiate` will accept a function as their last argument (even if nothing is passed for `options` or `duration`), which will be executed once the animation is complete. The callback function is called with no arguments passed.
+
+##Examples
+
+The `example.html` file in the repository shows a few examples of the plugin in action. You can view it live online at <http://jaredbranum.github.com/jquery-radiate/>.
