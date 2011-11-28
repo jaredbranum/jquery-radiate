@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    body {
+      text-align: center;
+      background-color: #0f0f0f;
+      font-family: helvetica, arial, sans-serif;
+    }
+    h1 {
+      color: #03c5c0;
+    }
+    #boxes {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .box {
+      padding-top: 40px;
+      margin: 55px auto 45px;
+      height: 60px;
+      width: 200px;
+    }
+    #docready {
+      background-color: #f00;
+    }
+    #btnclick {
+      background-color: #76e101;
+    }
+    #mouseover{
+      background-color: #7e0080;
+    }
+  </style>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery.radiate.js"></script>
+  <script type="text/javascript">
+    (function($){
+      $(document).ready(function(){
+
+        $('#docready').radiate({
+          color: '#0000c5'
+        });
+
+        var inputs = $('input'), btnbox = $('#btnclick');
+        inputs.click(function(e){
+          var btn = $(e.target);
+          inputs.attr('disabled', "disabled");
+          if (btn.is('#radiatebtn')){
+            btnbox.radiate({
+              color: '#ff0086'
+            }, function(){ inputs.attr('disabled', null); });
+          } else if (btn.is('#unradiatebtn')){
+            btnbox.unradiate(function(){ inputs.attr('disabled', null); });
+          }
+        });
+
+        var mousebox = $('#mouseover');
+        mousebox.hover(function(){
+          mousebox.radiate({
+            color: '#bdf300',
+            duration: 200,
+            spread: 5,
+            blur: 20
+          });
+        }, function(){
+          mousebox.unradiate(200);
+        });
+      });
+    })(jQuery);
+  </script>
+</head>
+<body>
+  <h1>jquery-radiate</h1>
+  <div id="boxes">
+    <div class="box" id="docready">When document is ready.</div>
+    <div class="box" id="btnclick">Change me with buttons.</div>
+    <input type="button" value="radiate" id="radiatebtn">
+    <input type="button" value="unradiate" id="unradiatebtn">
+    <div class="box" id="mouseover">Hover over me.</div>
+  </div>
+</body>
+</html>
